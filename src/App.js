@@ -28,12 +28,17 @@ function App() {
 
   return (
 
-<div className=' flex flex-col  bg-slate-200/50 h-screen'> 
-      <span className='text-xs m-3'>Porfavor escoga entre 'fruta' o 'ciudad' para filtrar la lista:</span>
-      <input className= ' w-1/4 mx-3 my-2 rounded-sm text-sm  border border-b-slate-600 ' type="text" value={filter} onChange={filterChange} placeholder="Filtrar por nombre" />
-      <ul className=' list-disc list-inside text-sm space-y-1 mx-6 font-normal'> 
-        {filteredlist.map(item => (
-          <li key={item.tipo}>{item.name}</li>
+<div className=' flex flex-col bg-slate-200/50 h-screen'> 
+<h1 className='text-md font-bold text-center m-6'>Aplicacion para filtrar segun dos criterios:</h1>
+      <span className='text-sm m-3'>Porfavor escoga entre 'fruta' o 'ciudad' para filtrar la lista:</span>
+      <select className='text-sm w-auto max-w-min rounded-md ml-6 mb-4' value={filter} onChange={filterChange}>
+        <option value="">Selecciona...</option>
+        <option value="fruta">Fruta</option>
+        <option value="ciudad">Ciudad</option>
+      </select>
+      <ul className='  list-inside text-sm space-y-1 mx-6 font-normal'> 
+        {filteredlist.map((item,index) => (
+          <li className={index % 2 === 0 ? 'bg-blue-500/50 p-2 font-normal' : 'bg-blue-300/50 p-2 font-bold'} key={item.tipo}>{item.name}</li>
         ))}
       </ul>
 </div>
